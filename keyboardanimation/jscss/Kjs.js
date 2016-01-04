@@ -158,29 +158,12 @@ var animateObj = {
     marginLeft : Math.floor(Math.random() * (windowWidth-100))+"px"
   };
 
-
-
-if(Math.floor(Math.random()*100)%2){
-
 	$(".animation").animate(
     animateObj,
-
-
     2000,
     function() {
 			$(this).remove();
 		});
-}else{
-
-  $(".animation").animate(
-    animateObj,
-
-    2000,
-    function() {
-      $(this).remove();
-    });
-
-}
 
 
 	id++;
