@@ -156,7 +156,7 @@ if(Math.floor(Math.random()*100)%2){
 	$(".animation").animate({
     	opacity: 0.15,
     	bottom: "+="+heightofwindow,
-      left: "+="+  (Math.floor(Math.random() * (500 - 100)) + 100),
+      left: "+="+  (Math.floor(Math.random() * (windowWidth/2 - 100)) + 100),
 		 },
     2000,
     function() {
