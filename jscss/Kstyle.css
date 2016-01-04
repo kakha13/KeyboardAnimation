@@ -1,0 +1,28 @@
+html,body{
+	overflow: hidden;
+}
+
+.notcolored {
+	background: white;
+	border:1px solid black;
+	outline:0;
+}
+.colored {
+	background:#7FD47F;
+	color:white;
+	border:1px solid white;
+	outline:0;
+}
+
+.animation {
+    position: absolute;
+   	padding:25px;
+   	font-size: 20px;
+    bottom: 0;
+    -webkit-animation:spin 4s linear infinite;
+    -moz-animation:spin 4s linear infinite;
+    animation:spin 4s linear infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }3
