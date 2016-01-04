@@ -154,26 +154,27 @@ $( "body" ).keydown(function(event) {
 
 var animateObj = {
     opacity: 0.15,
-    bottom: "+="+heightofwindow
+    bottom: "+="+heightofwindow,
+    marginLeft : Math.floor(Math.random() * (windowWidth-100))+"px"
   };
+
 
 
 if(Math.floor(Math.random()*100)%2){
 
- animateObj.left = "+="+  (Math.floor(Math.random() * windowWidth)),
-
 	$(".animation").animate(
     animateObj,
+
+
     2000,
     function() {
 			$(this).remove();
 		});
 }else{
 
-  animateObj.right = "+="+  (Math.floor(Math.random() * windowWidth)),
-
   $(".animation").animate(
     animateObj,
+
     2000,
     function() {
       $(this).remove();
