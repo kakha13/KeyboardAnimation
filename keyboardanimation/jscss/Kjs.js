@@ -151,24 +151,29 @@ $( "body" ).keydown(function(event) {
 		$("#"+id).css("width","20%");
 
 
+
+var animateObj = {
+    opacity: 0.15,
+    bottom: "+="+heightofwindow
+  };
+
+
 if(Math.floor(Math.random()*100)%2){
 
-	$(".animation").animate({
-    	opacity: 0.15,
-    	bottom: "+="+heightofwindow,
-      left: "+="+  (Math.floor(Math.random() * windowWidth)),
-		 },
+ animateObj.left = "+="+  (Math.floor(Math.random() * windowWidth)),
+
+	$(".animation").animate(
+    animateObj,
     2000,
     function() {
 			$(this).remove();
 		});
 }else{
 
-  $(".animation").animate({
-      opacity: 0.15,
-      bottom: "+="+heightofwindow,
-      right: "+="+  (Math.floor(Math.random() * windowWidth)),
-     },
+  animateObj.right = "+="+  (Math.floor(Math.random() * windowWidth)),
+
+  $(".animation").animate(
+    animateObj,
     2000,
     function() {
       $(this).remove();
