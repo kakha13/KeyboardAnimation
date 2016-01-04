@@ -101,84 +101,61 @@ array = {
     222: ['"', "12"]
 
 };
-	return array[keypress][code];
+    return array[keypress][code];
 }
 
 heightofwindow = $(window).height(); // window height
-
-var windowWidth = $(window).width();
-
 var id = 0;
 window.shadow = "";
 
 $(function(){
-
-	// color function
-	colored = 0;
-	$("#colored").click(function(){
-		if(colored == 1){
-			window.shadow = "";
-			colored = 0;
-		} else {
-			colored = 1;
-			window.shadow = "box-shadow:none !important;text-shadow:none";
-		}
-
-		//$(this).addClass("colored");
-		$( this ).toggleClass( "colored" );
-
-	});
-
-$( "body" ).keydown(function(event) {
-	event.preventDefault();
-	console.log(event.which+"="+key(event.which,"0"));
-	var thiskey = key(event.which,"0").toUpperCase();
-	var thiskeynumber = key(event.which,"1").toUpperCase();
-
-	// color start
-	var rgb = [];
-	for(var i = 0; i < 3; i++)
-	    rgb.push(Math.floor(Math.random() * 255));
-	if(window.shadow!=""){
-		var background = 'rgb('+ rgb.join(',') + ')';
-	} else var background = "";
-	// color end
-
-	var style="margin-left:"+5*thiskeynumber+"%;background:"+background+";"+shadow;
- 	$("body").append('<kbd class="dark animation" id="'+id+'" style="'+style+'">'+thiskey+'</kbd>');
-
- 	if(event.which==32)
-		$("#"+id).css("width","20%");
-
-
-if(Math.floor(Math.random()*100)%2){
-
-	$(".animation").animate({
-    	opacity: 0.15,
-    	bottom: "+="+heightofwindow,
-      left: "+="+  (Math.floor(Math.random() * (500 - 100)) + 100),
-		 },
-    2000,
-    function() {
-			$(this).remove();
-		});
-}else{
-
-  $(".animation").animate({
-      opacity: 0.15,
-      bottom: "+="+heightofwindow,
-      right: "+="+  (Math.floor(Math.random() * (windowWidth/2 - 100)) + 100),
-     },
-    2000,
-    function() {
-      $(this).remove();
+    
+    // color function
+    colored = 0;
+    $("#colored").click(function(){
+        if(colored == 1){
+            window.shadow = "";
+            colored = 0;
+        } else {
+            colored = 1;
+            window.shadow = "box-shadow:none !important;text-shadow:none";
+        }
+        
+        //$(this).addClass("colored");
+        $( this ).toggleClass( "colored" );
+        
     });
 
-}
+$( "body" ).keydown(function(event) {
+    event.preventDefault();
+    console.log(event.which+"="+key(event.which,"0"));
+    var thiskey = key(event.which,"0").toUpperCase();
+    var thiskeynumber = key(event.which,"1").toUpperCase();
 
+    // color start
+    var rgb = [];
+    for(var i = 0; i < 3; i++)
+        rgb.push(Math.floor(Math.random() * 255));
+    if(window.shadow!=""){
+        var background = 'rgb('+ rgb.join(',') + ')';
+    } else var background = "";
+    // color end
+    
+    var style="margin-left:"+5*thiskeynumber+"%;background:"+background+";"+shadow;
+    $("body").append('<kbd class="dark animation" id="'+id+'" style="'+style+'">'+thiskey+'</kbd>');
+    
+    if(event.which==32)
+        $("#"+id).css("width","20%");
 
-	id++;
-	});
+    $(".animation").animate({
+    opacity: 0.15,
+    bottom: "+="+heightofwindow,
+         }, 2000, function() {
+            $(this).remove();
+        });
+    id++;
+
+    });
 
 
 });
