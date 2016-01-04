@@ -104,11 +104,12 @@ function key(keypress, code) {
     return array[keypress][code];
 }
 
-heightofwindow = $(window).height(); // window height
-var id = 0;
-window.shadow = "";
-
 $(function() {
+
+	heightofwindow = $(window).height(); // window height
+	windowWidth = $(window).width(); // window height
+	var id = 0;
+	window.shadow = "";
 
     // color function
     colored = 0;
@@ -123,6 +124,7 @@ $(function() {
 
         //$(this).addClass("colored");
         $(this).toggleClass("colored");
+
 
     });
 
@@ -147,12 +149,20 @@ $(function() {
         if (event.which == 32)
             $("#" + id).css("width", "20%");
 
-        $(".animation").animate({
-            opacity: 0.15,
-            bottom: "+=" + heightofwindow,
-        }, 2000, function() {
-            $(this).remove();
-        });
+	        
+	var animateObj = {
+	    opacity: 0.15,
+	    bottom: "+="+heightofwindow,
+	    marginLeft : Math.floor(Math.random() * (windowWidth-100))+"px"
+	  };
+
+	$(".animation").animate(
+    animateObj,
+    2000,
+    function() {
+			$(this).remove();
+		});
+
         id++;
 
     });
