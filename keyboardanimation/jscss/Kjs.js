@@ -105,11 +105,14 @@ array = {
 }
 
 heightofwindow = $(window).height(); // window height
+
+var windowWidth = $(window).width();
+
 var id = 0;
 window.shadow = "";
 
 $(function(){
-	
+
 	// color function
 	colored = 0;
 	$("#colored").click(function(){
@@ -120,10 +123,10 @@ $(function(){
 			colored = 1;
 			window.shadow = "box-shadow:none !important;text-shadow:none";
 		}
-		
+
 		//$(this).addClass("colored");
 		$( this ).toggleClass( "colored" );
-		
+
 	});
 
 $( "body" ).keydown(function(event) {
@@ -140,21 +143,41 @@ $( "body" ).keydown(function(event) {
 		var background = 'rgb('+ rgb.join(',') + ')';
 	} else var background = "";
 	// color end
-	
+
 	var style="margin-left:"+5*thiskeynumber+"%;background:"+background+";"+shadow;
  	$("body").append('<kbd class="dark animation" id="'+id+'" style="'+style+'">'+thiskey+'</kbd>');
- 	
+
  	if(event.which==32)
 		$("#"+id).css("width","20%");
 
+
+if(Math.floor(Math.random()*100)%2){
+
 	$(".animation").animate({
-	opacity: 0.15,
-	bottom: "+="+heightofwindow,
-		 }, 2000, function() {
+    	opacity: 0.15,
+    	bottom: "+="+heightofwindow,
+      left: "+="+  (Math.floor(Math.random() * (500 - 100)) + 100),
+		 },
+    2000,
+    function() {
 			$(this).remove();
 		});
-	id++;
+}else{
 
+  $(".animation").animate({
+      opacity: 0.15,
+      bottom: "+="+heightofwindow,
+      right: "+="+  (Math.floor(Math.random() * (windowWidth/2 - 100)) + 100),
+     },
+    2000,
+    function() {
+      $(this).remove();
+    });
+
+}
+
+
+	id++;
 	});
 
 
